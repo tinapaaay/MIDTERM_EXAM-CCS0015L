@@ -1,6 +1,16 @@
 #include <iostream>
+#include <cstdlib>
+#include <cctype>
 
 using namespace std;
+
+struct node {
+	int data;
+	node* next;
+};
+
+node* front = NULL;      //head 
+node* rear = NULL;       //tail 
 
 void menu() {
 	cout << "HJT Western Banking Cooperation" << endl;
@@ -22,21 +32,31 @@ void intValidation(int& num) {
 	}
 }
 
+void ticketing();
+void transactions();
+void displayQueue();
+void exit(bool& termination);
+
 int main() {
 	int choice;
+	bool termination = false;
 
-	menu();
-	cout << "Enter your choice: ";
-	while (true) {
-		intValidation(choice);
-		if (choice < 1 || choice > 4) {
-			cout << "Choice should be either from 1 - 4, try again: ";
-		}else {
-			break;
+	do {
+		menu();
+		cout << "Enter your choice: ";
+		while (true) {
+			intValidation(choice);
+			if (choice < 1 || choice > 4) {
+				cout << "Choice should be either from 1 - 4, try again: ";
+			}
+			else {
+				break;
+			}
 		}
-	}
 
-	switch (choice){
+		system("cls");
+
+		switch (choice) {
 		case 1:
 			break;
 		case 2:
@@ -44,8 +64,24 @@ int main() {
 		case 3:
 			break;
 		case 4:
+			exit(termination);
 			break;
-	}
+		}
+	} while (!termination);
 
 	return 0;
+}
+
+void exit(bool& termination) {
+	string exitOption;
+
+	cout << "Are you sure do you want to exit the program: ";
+	cin >> exitOption;
+
+	system("cls");
+
+	if (exitOption == "yes" || tolower(exitOption == "YES") || tolower(exitOption == "Yes")) {
+		termination = true;
+		cout << "Program has been sucessfully terminated." << endl;
+	}
 }
