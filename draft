@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+
+void menu() {
+	cout << "HJT Western Banking Cooperation" << endl;
+	cout << "1. Get a Ticket" << endl;
+	cout << "2. Process client and perform banking operations" << endl;
+	cout << "3. Display Queue" << endl;
+	cout << "4. Exit" << endl;
+}
+
+void intValidation(int& num) {
+	while (true) {
+		if (cin >> num) {
+			break;
+		}else {
+			cout << "Input must be a number, try again: ";
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+		}
+	}
+}
+
+int main() {
+	int choice;
+
+	menu();
+	cout << "Enter your choice: ";
+	while (true) {
+		intValidation(choice);
+		if (choice < 1 || choice > 4) {
+			cout << "Choice should be either from 1 - 4, try again: ";
+		}else {
+			break;
+		}
+	}
+
+	switch (choice){
+		case 1:
+			break;
+		case 2:
+			break
+		case 3:
+			break;
+		case 4:
+			break;
+	}
+
+	return 0;
+}
