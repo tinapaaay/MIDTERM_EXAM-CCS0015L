@@ -1,0 +1,73 @@
+#include<iostream>
+
+using namespace std;
+
+void deposit();
+void withdraw();
+void display_amount(int num);
+
+int amount=0, total_amount=0;
+
+int main() {
+    
+    char choice;
+    
+    bool exit=0;
+    cout << "Processing client with ticket number _..." <<endl;
+    
+    do {
+    cout << "\nOperations:" <<endl;
+    cout << "[D] Deposit" << endl;
+    cout << "[W] Widrawal" << endl;
+    cout << "[C] Check Balance" << endl;
+    cout << "[E] End Transaction" << endl;
+    
+    cout << "\n  -->Enter your choice: ";
+    cin >> choice;
+    
+    switch(choice){
+        case 'd':
+        case 'D':
+            deposit();
+            break;
+        case 'w':
+        case 'W':
+            withdraw();
+            
+            break;
+        case 'c':
+        case 'C':
+            display_amount(total_amount);
+            break;
+        case 'e':
+        case 'E':
+            break;
+    }
+    }while(exit==0);
+    return 0;
+}
+
+void deposit() {
+    cout << "  -->Enter amount to deposit: ";
+    cin >> amount;
+    
+    cout << "\n  Deposited: " << amount << endl;
+    total_amount+=amount;
+    cout << "  Current Balance: " << total_amount << endl;
+    
+}
+
+void withdraw() {
+    cout << "  -->Enter amount to withdraw: ";
+    cin >> amount;
+    if (amount > total_amount) {
+        cout << "\n  -->Insufficient balance. Please try again..." << endl;
+    }
+    cout << "\nWithdrew: " << amount << endl;
+    total_amount-=amount;
+    cout << "  Current Balance: " << total_amount << endl;
+}
+
+void display_amount(int num) {
+    cout << "  Your current balance: " << num <<endl;
+}
